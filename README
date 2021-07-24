@@ -1,0 +1,4 @@
+# Instruções
+
+cargo build
+cargo run
