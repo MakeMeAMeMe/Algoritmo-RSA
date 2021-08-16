@@ -1,26 +1,8 @@
-/**
- *
- * static public Org.BouncyCastle.Math.BigInteger genpr2(int bits)
- * {
- *     Org.BouncyCastle.Security.SecureRandom ran = new Org.BouncyCastle.Security.SecureRandom();
- *
- *     Org.BouncyCastle.Math.BigInteger c = new Org.BouncyCastle.Math.BigInteger(bits, ran);
- *
- *     for (; ; )
- *     {
- *         if (c.IsProbablePrime(1) == true) break;
- *
- *         c = c.Subtract(new Org.BouncyCastle.Math.BigInteger("1"));
- *     }
- *     return (c);
- * }
- *
- */
 pub mod euclides_estendido;
 use euclides_estendido::euclides_estendido;
 
 use num_bigint::{BigInt, RandBigInt, ToBigInt};
-use num_traits::{One};
+use num_traits::One;
 use rand::thread_rng;
 
 pub fn generate_prime(size: u64) -> BigInt {
@@ -36,7 +18,7 @@ pub fn generate_prime(size: u64) -> BigInt {
     return num;
 }
 
-// Teste de Fernout? // TODO comfirmar nome
+// Teste de Fernout
 fn teste_primalidade(num: &BigInt, qtd_tests: u32) -> bool {
     let mut rng = thread_rng();
     for _ in 1..qtd_tests {

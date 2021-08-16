@@ -23,6 +23,7 @@ impl fmt::Display for Tripla {
     }
 }
 
+// ax + by = mdc(a, b)
 pub fn euclides_estendido(a: &BigInt, b: &BigInt) -> Tripla {
     let mut mdc: BigInt = a.clone();
     let mut mdc_old: BigInt = b.clone();
@@ -38,7 +39,7 @@ pub fn euclides_estendido(a: &BigInt, b: &BigInt) -> Tripla {
         let diff_mdc = &q * &mdc_old;
         mdc_old = replace(&mut mdc, mdc_old) - &diff_mdc;
 
-        let diff_x = &q * &x_old; // TODO: Double check if it is x_old or x
+        let diff_x = &q * &x_old; 
         x_old = replace(&mut x, x_old) - &diff_x;
 
         let diff_y = &q * &y_old;
