@@ -4,19 +4,33 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
         {
+            "name": "Launch an application",
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'trabalho'",
+            "program": "${workspaceRoot}/target/debug/main",
+            "cwd": "${workspaceRoot}/target/debug",
+        },
+        {
+            "name": "Attach to a named executable",
+            "type": "lldb",
+            "request": "attach",
+            "program": "${workspaceRoot}/target/debug/main",
+        },
+        {
+            "name": "Debug",
+            "type": "lldb",
+            "request": "launch",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=trabalho",
+                    "--lib",
                     "--package=trabalho"
                 ],
                 "filter": {
                     "name": "trabalho",
-                    "kind": "bin"
+                    "kind": "lib"
                 }
             },
             "args": [],

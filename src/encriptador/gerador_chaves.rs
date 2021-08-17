@@ -1,4 +1,4 @@
-use num_bigint::{BigInt, RandBigInt, ToBigInt};
+use num_bigint::{BigInt, RandBigInt};
 use num_traits::One;
 use rand::thread_rng;
 use std::fmt;
@@ -18,9 +18,9 @@ impl fmt::Display for ChavePrivada {
         write!(
             f,
             "Chave Privada:\np: {p}\nq: {q}\nd: {d}",
-            p = self.p.to_str_radix(32),
-            q = self.q.to_str_radix(32),
-            d = self.d.to_str_radix(32)
+            p = self.p,
+            q = self.q,
+            d = self.d
         )
     }
 }
@@ -35,8 +35,8 @@ impl fmt::Display for ChavePublica {
         write!(
             f,
             "Chave Pública:\nn: {n}\ne: {e}",
-            n = self.n.to_str_radix(32),
-            e = self.e.to_str_radix(32)
+            n = self.n,
+            e = self.e
         )
     }
 }
@@ -62,8 +62,8 @@ pub fn gerar_chaves(bits: u64) -> Chaves {
     // chave privada = (p, q, d)
 
     // Gerar primos p e q
-    let p = generate_prime(bits);
-    let q = generate_prime(bits);
+    let p = generate_prime(bits / 2); // p e q devem ter a metade do tamanho de n, d e e
+    let q = generate_prime(bits / 2); // p e q devem ter a metade do tamanho de n, d e e
 
     // Gerar n
     let n = &p * &q;
@@ -73,17 +73,21 @@ pub fn gerar_chaves(bits: u64) -> Chaves {
     let q_minus: BigInt = q.checked_sub(&One::one()).unwrap();
     let z: BigInt = p_minus * q_minus;
 
+    let full_min = BigInt::one() << (bits / 2 - 1);
+
     let mut rng = thread_rng();
     let mut max = z.clone();
-    let mut num: BigInt = rng.gen_bigint_range(&2.to_bigint().unwrap(), &max);
+    let mut min: BigInt = rng.gen_bigint_range(&full_min, &max);
+    let mut num = min.clone();
     let e: BigInt;
     loop {
         if euclides_estendido(&num, &z).mdc.is_one() {
             e = num;
             break;
         } else if num.eq(&max) {
-            max = num.clone();
-            num = rng.gen_bigint_range(&2.to_bigint().unwrap(), &max);
+            max = min.clone();
+            min = rng.gen_bigint_range(&full_min, &max);
+            num = min.clone();
         } else {
             num = num.checked_add(&One::one()).unwrap();
         }

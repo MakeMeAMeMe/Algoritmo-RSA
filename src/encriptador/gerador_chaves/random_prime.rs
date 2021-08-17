@@ -19,7 +19,7 @@ pub fn generate_prime(size: u64) -> BigInt {
 }
 
 // Teste de Fernout
-fn teste_primalidade(num: &BigInt, qtd_tests: u32) -> bool {
+pub fn teste_primalidade(num: &BigInt, qtd_tests: u32) -> bool {
     let mut rng = thread_rng();
     for _ in 1..qtd_tests {
         let a: &BigInt = &rng.gen_bigint_range(&3.to_bigint().unwrap(), &num);
