@@ -1,7 +1,7 @@
 use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion, SamplingMode};
 // use std::time::Duration;
 use trabalho::encriptador::gerador_chaves::{gerar_chaves, Chaves};
-use trabalho::encriptador::{decriptar_texto, encriptar_texto};
+use trabalho::encriptador::{decriptar_texto, encriptar_texto, forca_bruta};
 
 fn keys_gen_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("Key gen sizes");
@@ -70,9 +70,13 @@ fn brute_force_benchmarck(c: &mut Criterion) {
     for tamanho in (tamanho_min..=tamanho_max).step_by(8usize) {
         let chave: &Chaves = &gerar_chaves(tamanho);
         let mensagem_enc = encriptar_texto(mensagem, &chave.publica);
-        group.bench_function(BenchmarkId::new("Decript ", tamanho), |b| {
-            b.iter(|| decriptar_texto(&mensagem_enc, chave));
-        });
+        group.bench_with_input(
+            BenchmarkId::new("Brute Force ", tamanho),
+            &tamanho,
+            |b, tamanho| {
+                b.iter(|| forca_bruta(&mensagem_enc, &chave.publica, *tamanho));
+            },
+        );
     }
     group.finish();
 }
