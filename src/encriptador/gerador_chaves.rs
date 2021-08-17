@@ -3,7 +3,7 @@ use num_traits::One;
 use rand::thread_rng;
 use std::fmt;
 
-mod random_prime;
+pub mod random_prime;
 use random_prime::euclides_estendido::{euclides_estendido, inverso_modular};
 use random_prime::generate_prime;
 
@@ -18,9 +18,9 @@ impl fmt::Display for ChavePrivada {
         write!(
             f,
             "Chave Privada:\np: {p}\nq: {q}\nd: {d}",
-            p = self.p,
-            q = self.q,
-            d = self.d
+            p = self.p.to_str_radix(32),
+            q = self.q.to_str_radix(32),
+            d = self.d.to_str_radix(32)
         )
     }
 }
@@ -32,7 +32,12 @@ pub struct ChavePublica {
 
 impl fmt::Display for ChavePublica {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Chave Pública:\nn: {n}\ne: {e}", n = self.n, e = self.e)
+        write!(
+            f,
+            "Chave Pública:\nn: {n}\ne: {e}",
+            n = self.n.to_str_radix(32),
+            e = self.e.to_str_radix(32)
+        )
     }
 }
 
@@ -52,13 +57,13 @@ impl fmt::Display for Chaves {
     }
 }
 
-pub fn gerar_chaves<const BITS: u64>() -> Chaves {
+pub fn gerar_chaves(bits: u64) -> Chaves {
     // chave publica = (n, e)
     // chave privada = (p, q, d)
 
     // Gerar primos p e q
-    let p = generate_prime(BITS);
-    let q = generate_prime(BITS);
+    let p = generate_prime(bits);
+    let q = generate_prime(bits);
 
     // Gerar n
     let n = &p * &q;
@@ -86,7 +91,6 @@ pub fn gerar_chaves<const BITS: u64>() -> Chaves {
 
     // Gerar d
     let d = inverso_modular(&e, &z);
-    
     Chaves {
         publica: ChavePublica { n: n, e: e },
         privada: ChavePrivada { p: p, q: q, d: d },
