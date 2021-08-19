@@ -4,4 +4,6 @@ cargo build
 cargo run
 cargo bench
 
+Link para o vídeo no youtube: https://youtu.be/ERowSWEvEZY
+
 O arquivo ./criterion/report/index.html tem todos os gráficos gerados, é só abrir com um nevegador.
