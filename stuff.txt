@@ -1,0 +1,13 @@
+while q < n: O(n)
+    if n % q == 0: O(1)
+        if q is prime: O(klog^2 n)
+            p = n / q O(1)
+            if p is prime: O(klog^2 n)
+                q_minus O(1)
+                p_minus O(1)
+                z = p_minus * q_minus O(1)
+                d = inverso_modular O(n^3)
+                return decriptar() 
+
+O(n * (1 + klog^2n + 1 + klog^2n + 1 + 1 + n^3 + n^3))
+O(n + nklog^2n + n + nklog^2n + n + n + n^4 + n^4) = O(n^4)

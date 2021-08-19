@@ -1,0 +1,11 @@
+group,function,value,throughput_num,throughput_type,sample_measured_value,unit,iteration_count
+Key gen sizes,Benchmark KeyGen ,704,,,433307941.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,689912787.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,344343004.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,478598130.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,217307153.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,561362434.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,529932149.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,376970826.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,372743889.0,ns,5
+Key gen sizes,Benchmark KeyGen ,704,,,393153981.0,ns,5

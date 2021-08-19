@@ -1,0 +1,11 @@
+group,function,value,throughput_num,throughput_type,sample_measured_value,unit,iteration_count
+Brute Force,Brute Force ,48,,,596533120.0,ns,2
+Brute Force,Brute Force ,48,,,606662872.0,ns,2
+Brute Force,Brute Force ,48,,,594684424.0,ns,2
+Brute Force,Brute Force ,48,,,596868138.0,ns,2
+Brute Force,Brute Force ,48,,,594616294.0,ns,2
+Brute Force,Brute Force ,48,,,598133127.0,ns,2
+Brute Force,Brute Force ,48,,,617812678.0,ns,2
+Brute Force,Brute Force ,48,,,627933387.0,ns,2
+Brute Force,Brute Force ,48,,,623754221.0,ns,2
+Brute Force,Brute Force ,48,,,641682052.0,ns,2

@@ -3,3 +3,5 @@
 cargo build
 cargo run
 cargo bench
+
+O arquivo ./criterion/report/index.html tem todos os gráficos gerados, é só abrir com um nevegador.

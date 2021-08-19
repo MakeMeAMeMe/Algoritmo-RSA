@@ -1,0 +1,11 @@
+group,function,value,throughput_num,throughput_type,sample_measured_value,unit,iteration_count
+Encript,Encript ,256,,,508371320.0,ns,19
+Encript,Encript ,256,,,509918261.0,ns,19
+Encript,Encript ,256,,,507390002.0,ns,19
+Encript,Encript ,256,,,509449843.0,ns,19
+Encript,Encript ,256,,,508098287.0,ns,19
+Encript,Encript ,256,,,509101023.0,ns,19
+Encript,Encript ,256,,,507320700.0,ns,19
+Encript,Encript ,256,,,512134614.0,ns,19
+Encript,Encript ,256,,,507321673.0,ns,19
+Encript,Encript ,256,,,513712632.0,ns,19
